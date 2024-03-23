@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { undoTask } from "../Strore/actions";
-import { Text } from "@chakra-ui/react";
+import { Box, Button, Text } from "@chakra-ui/react";
 function TaskCard({ task }) {
   const dispatch = useDispatch();
   function handleCheckboxChange(task) {
@@ -10,17 +10,18 @@ function TaskCard({ task }) {
   return (
     <>
       {/* <p>{JSON.stringify(task)}</p>; */}
-      <div key={task.id}>
+      {/* <div key={task.id}>
         <input
           type="checkbox"
           id={`task${task.id}`}
           onChange={() => handleCheckboxChange(task)}
         />
         <label htmlFor={`task${task.id}`}>{task.title}</label>
-        <Text style={{ textDecorationLine: "line-through" }}>
-          {task.description}
-        </Text>
-      </div>
+        <Text textDecoration={"line-through"}>{task.description}</Text>
+      </div> */}
+      <Box onClick={() => dispatch(undoTask(task))}>
+        <Button textDecoration={"line-through"}>{task.title}</Button>
+      </Box>
     </>
   );
 }
