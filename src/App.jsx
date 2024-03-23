@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import store from "./Strore/Store";
 import { ChakraProvider } from "@chakra-ui/react";
 import NavBar from "./Components/NavBar";
-
+import "./App.css";
 function App() {
   return (
     <>
