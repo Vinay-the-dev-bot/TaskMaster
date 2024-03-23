@@ -29,7 +29,7 @@ function TaskCard({ task, setSelectedTask }) {
           {task.title}
         </Checkbox>
         {/* <label htmlFor={`task${task.id}`}>{task.title}</label> */}
-        <Text strikethrough>{task.description}</Text>
+        <Text>{task.description}</Text>
       </div>
     </>
   );
