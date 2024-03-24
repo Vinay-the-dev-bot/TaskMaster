@@ -1,36 +1,54 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { completeTask } from "../Strore/actions";
-import { Checkbox, Text } from "@chakra-ui/react";
+import { Checkbox, Text, Box, useToast } from "@chakra-ui/react";
+import { url } from "../App";
 
 function TaskCard({ task, setSelectedTask }) {
   const dispatch = useDispatch();
-  function handleCheckboxChange(task) {
+  const toast = useToast();
+  const token = useSelector((state) => state.token);
+  async function handleCheckboxChange(task) {
     // dispatch({ type: "COMPLETE_TASK", payload: task.id });
-
-    dispatch(completeTask(task));
+    const res = await fetch(`${url}/tasks/complete/${task._id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    if (data.msg == "Task Completed") {
+      dispatch(completeTask(task));
+      toast({
+        title: "Task Completed",
+        status: "success",
+        duration: 1000,
+        position: "top-right",
+        isClosable: true,
+      });
+    }
     setSelectedTask([]);
   }
   return (
     <>
-      {/* <p>{JSON.stringify(task)}</p>; */}
-      <div>
-        {/* <input
-          type="checkbox"
-          checked={task.completed}
-          id={`task${task.id}`}
-          onChange={() => handleCheckboxChange(task)}
-        /> */}
-        <Checkbox
+      <Box className="flex w-4/5 m-auto flex-col justify-around">
+        {/* <Checkbox
           size="lg"
           onChange={() => handleCheckboxChange(task)}
           colorScheme="orange"
           checked={task.completed}
         >
           {task.title}
+        </Checkbox> */}
+        <Checkbox
+          onChange={() => handleCheckboxChange(task)}
+          colorScheme="orange"
+        >
+          CHECKBOX
         </Checkbox>
-        {/* <label htmlFor={`task${task.id}`}>{task.title}</label> */}
+        {/* <label htmlFor={`task${task._id}`}>{task.title}</label> */}
         <Text>{task.description}</Text>
-      </div>
+      </Box>
     </>
   );
 }
