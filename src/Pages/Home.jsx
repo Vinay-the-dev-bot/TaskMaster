@@ -63,7 +63,6 @@ function Home() {
 
   return (
     <>
-      <p>{JSON.stringify(tasks)}</p>
       <Text className="text-3xl text-center">Tasks</Text>
       {storeState.username ? (
         <Box border={"1px solid black"} className="flex w-4/5 m-auto">
