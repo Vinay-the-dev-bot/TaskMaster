@@ -1,8 +1,57 @@
-# React + Vite
+# TaskMaster
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TaskMaster - Create and Manage Tasks
 
-Currently, two official plugins are available:
+# Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1.  User Management : Robust user management, Passwordds are hashed before storet, authentication using JWT, to authenticate user and limited access to data, only authorized personel can access data
+2.  CRUD Operation
+    User can Create Tasks, Read Taks, Update Tasks and Delete tasks
+3.
+
+# Technology Stack
+
+- **Frontend:**
+
+  - TailWind
+  - Chakra-UI
+  - React
+
+- **Backend:**
+  - Node.js
+  - Express
+  - MongoDB
+  - Mongoose
+  - JWT and BCRYPT
+
+## Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/Vinay-the-dev-bot/taskMaster
+   ```
+2. Navigate to the project directory:
+
+   ```
+   cd taskMaster
+   ```
+
+3. Install dependencies:
+
+   ```
+   npm install
+   ```
+
+4. Start the App:
+   ```
+   npm run dev
+   ```
+
+# ScreenShots
+
+1. Landing Page
+2. Sign Up Page
+3. Login Page
+4. DashBoard
+5. Complete A Task
+6. Update or Delete A Task
