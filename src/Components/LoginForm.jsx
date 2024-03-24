@@ -37,12 +37,15 @@ function LoginForm() {
         duration: 1000,
         isClosable: true,
       });
+      console.log(data);
+      localStorage.setItem("username", data.user);
+      localStorage.setItem("token", data.token);
       dispatch({
         type: "LOGIN",
         payload: { username: data.user.username, token: data.token },
       });
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/");
       }, 1000);
     } else {
       setIsLoading(false);
@@ -63,17 +66,17 @@ function LoginForm() {
           id="form"
           className="flex bg-sky-500 w-3/5 justify-center flex-col gap-2"
         >
-          <label>Enter Email</label>
+          <label className="lbll">Enter Email</label>
           <input
-            className="p-2"
+            className="inpt  p-2"
             type="email"
             placeholder="Enter User Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label>Enter Password</label>
+          <label className="lbll">Enter Password</label>
           <input
-            className="p-2"
+            className="inpt p-2"
             type="password"
             placeholder="Enter Password"
             value={password}

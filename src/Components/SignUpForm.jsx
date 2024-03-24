@@ -40,7 +40,7 @@ function SignupForm() {
           });
 
           setTimeout(() => {
-            navigate("/login");
+            navigate("/");
           }, 1000);
         } else {
           toast({
@@ -74,26 +74,26 @@ function SignupForm() {
       //   border={"1px solid black"}
       className="  bg-sky-500   "
     >
-      <label>Enter Username</label>
+      <label className="lbll">Enter Username</label>
       <input
         type="text"
-        className="m-auto p-2"
+        className="m-auto inpt p-2"
         placeholder="Enter User Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <label>Enter Email</label>
+      <label className="lbll">Enter Email</label>
       <input
-        className="m-auto p-2"
+        className="inpt m-auto p-2"
         type="email"
         placeholder="Enter User Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <label>Enter Password</label>
+      <label className="lbll">Enter Password</label>
       <div className="inpdiv  ">
         <input
-          className="passwordInp p-2"
+          className="passwordInp inpt p-2"
           type="password"
           id="password"
           placeholder="Enter Password"
@@ -101,10 +101,10 @@ function SignupForm() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <label>Confirm Password</label>
+      <label className="lbll">Confirm Password</label>
       <div className="inpdiv  ">
         <input
-          className="passwordInp p-2"
+          className="inpt passwordInp p-2"
           type="password"
           placeholder="Confirm Password"
           value={confirmPassword}
