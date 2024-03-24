@@ -33,7 +33,7 @@ function SignupForm() {
         if (data.USER) {
           toast({
             title: "Account created.",
-            description: "Please login to start taking notes ",
+            description: "Please login to start adding Tasks ",
             status: "success",
             duration: 1000,
             isClosable: true,
