@@ -114,7 +114,7 @@ function SignupForm() {
       </div>
       <Button
         id="regButton"
-        className="m-auto  "
+        className="m-auto w-4/5 "
         onClick={(e) => handleRegister(e)}
       >
         Register

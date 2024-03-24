@@ -15,8 +15,7 @@
 }
 
 .inpt,
-textarea,
-button {
+textarea {
   border-bottom: 1px solid black;
   padding: 5px;
   width: 80%;

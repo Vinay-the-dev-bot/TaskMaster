@@ -17,17 +17,17 @@ function Login() {
           {isLogin ? <LoginForm /> : <SignupForm />}
         </div>
 
-        <Box className="w-2/5 m-auto gap-5 flex flex-col items-center ">
+        <Box className="w-2/5 m-auto  flex flex-col items-center ">
           {isLogin ? (
             <>
-              <Text className="w-fit">Dont Have an Account</Text>
+              <Text className="w-fit p-5">Don't Have an Account</Text>
               <Button className="w-fit" onClick={() => setIsLogin(false)}>
                 Register
               </Button>
             </>
           ) : (
             <>
-              <Text>Already Have an Account</Text>
+              <Text className="p-5">Already Have an Account</Text>
               <Button className="w-fit" onClick={() => setIsLogin(true)}>
                 Login
               </Button>
