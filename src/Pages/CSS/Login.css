@@ -1,0 +1,64 @@
+label {
+  border: none;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: auto;
+  /* background-color: #2d9596; */
+  border-radius: 10px;
+  padding: 50px 0;
+}
+
+input,
+textarea,
+button {
+  border-bottom: 1px solid black;
+  padding: 5px;
+  width: 80%;
+  margin: auto;
+  background-color: #f0f0f0;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.inpdiv {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border-bottom: 1px solid black;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  margin: auto;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+#loginButton {
+  display: block;
+  width: 80%;
+  margin: auto;
+}
+#loginForm {
+  width: 80%;
+  margin: auto;
+}
+.passwordInp {
+  border: none;
+  /* width: 95%; */
+  width: 100%;
+  margin: 0;
+}
+label {
+  border: none;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
