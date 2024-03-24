@@ -5,13 +5,14 @@ import store from "./Strore/Store";
 import { ChakraProvider } from "@chakra-ui/react";
 import NavBar from "./Components/NavBar";
 import "./App.css";
+export const url = "http://localhost:4500";
 function App() {
   return (
     <>
       <ChakraProvider>
         <Provider store={store}>
           <BrowserRouter>
-            {/* <NavBar /> */}
+            <NavBar />
             <MainRoute />
           </BrowserRouter>
         </Provider>

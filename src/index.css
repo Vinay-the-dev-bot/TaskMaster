@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input {
+  margin: auto;
+}
+* {
+  font-family: "Poppins", sans-serif;
+}

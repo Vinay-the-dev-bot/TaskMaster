@@ -9,7 +9,8 @@ const task = [
     //   { subtasktitle: "subTask3", completed: false },
     //   { subtasktitle: "subTask4", completed: false },
     // ],
-    description: "DECRIPTION 1",
+    description:
+      "DECRIPTION 1DECRIPTION E   1DECRIPTION 1DECRIPTION 1DECRIPTPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION ION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1DECRIPTION 1",
     completed: false,
   },
   {
@@ -37,25 +38,43 @@ const task = [
     completed: false,
   },
 ];
+
+const user = localStorage.getItem("username");
+const token = localStorage.getItem("token");
 const initialState = {
-  name: "",
-  tasks: task,
+  username: user || "",
+  tasks: [],
+  token: token || "",
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case "TASKS":
+      return {
+        ...state,
+        tasks: action.payload,
+      };
     case "ADD_TASK":
-      return { ...state, tasks: [...state.tasks, action.payload] };
+      return {
+        ...state,
+        tasks: [...state.tasks, { ...action.payload, completed: false }],
+      };
+
+    case "TASK_EDIT":
+      return {
+        ...state,
+        tasks: [...state.tasks, action.payload],
+      };
     case "DELETE_TASK":
+      console.log("dateleTask", action);
       const updatedTasks = state.tasks.filter(
-        (task) => task.id != action.payload.id
+        (task) => task._id != action.payload
       );
       return { ...state, tasks: updatedTasks };
     case "COMPLETE_TASK":
-      console.log(action);
       const completedTask = state.tasks.map((task) => {
-        if (task.id == action.payload) {
-          console.log(task.id, action.payload);
+        if (task._id == action.payload) {
+          console.log(task._id, action.payload);
           task.completed = true;
         }
         return task;
@@ -65,14 +84,23 @@ const reducer = (state = initialState, action) => {
     case "INCOMPLETE_TASK":
       console.log(action);
       const inCompletedTask = state.tasks.map((task) => {
-        if (task.id == action.payload) {
-          console.log(task.id, action.payload);
+        if (task._id == action.payload) {
+          console.log(task._id, action.payload);
           task.completed = false;
         }
         return task;
       });
       console.log(inCompletedTask);
       return { ...state, tasks: inCompletedTask };
+    case "LOGIN":
+      console.log(action);
+      return {
+        ...state,
+        username: action.payload.username,
+        token: action.payload.token,
+      };
+    case "LOGOUT":
+      return { ...state, username: "", token: "", task: [] };
     default:
       return state;
   }
