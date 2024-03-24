@@ -18,23 +18,20 @@ const NavBar = () => {
       duration: 1000,
       isClosable: true,
     });
-    // setTimeout(() => {
-    //   navigate("/");
-    // }, 1000);
   };
   return (
     <>
       <Box className="flex justify-around items-center py-5">
-        <Text>
+        <Text className="text-3xl">
           <Link to="/">
             Task
             <Text as={"span"} color={"red"}>
               Master
             </Text>
           </Link>
-        </Text>{" "}
+        </Text>
         <Text>
-          <Link to="/">DashBoard</Link>
+          <Link to="/dashboard">DashBoard</Link>
         </Text>
         <Text>
           {state.username || (
