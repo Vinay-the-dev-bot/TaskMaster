@@ -184,7 +184,7 @@ function DashBoard() {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader className="m-auto">Task</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <AddTask onClose={onClose} />
