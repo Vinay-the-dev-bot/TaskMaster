@@ -44,6 +44,8 @@ const token = localStorage.getItem("token");
 const initialState = {
   username: user || "",
   tasks: [],
+  completedTasks: [],
+  unCompletedTasks: [],
   token: token || "",
 };
 
@@ -63,7 +65,8 @@ const reducer = (state = initialState, action) => {
     case "TASK_EDIT":
       const editedTasks = state.tasks.map((task) => {
         if (task._id == action.payload._id) {
-          console.log(task._id, action.payload);
+          task.title = action.payload.title;
+          task.description = action.payload.description;
           task.completed = false;
         }
         return task;
