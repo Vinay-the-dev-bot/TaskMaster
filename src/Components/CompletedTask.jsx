@@ -101,6 +101,7 @@ function TaskCard({ task }) {
       <Box>
         <Button
           onClick={onOpen}
+          className="px-10"
           // onClick={() => handleCompletedTask(task)}
           textDecoration={"line-through"}
         >
