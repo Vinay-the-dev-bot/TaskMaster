@@ -61,14 +61,21 @@ const reducer = (state = initialState, action) => {
       };
 
     case "TASK_EDIT":
+      const editedTasks = state.tasks.map((task) => {
+        if (task._id == action.payload._id) {
+          console.log(task._id, action.payload);
+          task.completed = false;
+        }
+        return task;
+      });
       return {
         ...state,
-        tasks: [...state.tasks, action.payload],
+        tasks: editedTasks,
       };
     case "DELETE_TASK":
       console.log("dateleTask", action);
       const updatedTasks = state.tasks.filter(
-        (task) => task._id != action.payload
+        (task) => task._id != action.payload._id
       );
       return { ...state, tasks: updatedTasks };
     case "COMPLETE_TASK":

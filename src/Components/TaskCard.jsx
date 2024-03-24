@@ -8,7 +8,6 @@ function TaskCard({ task, setSelectedTask }) {
   const toast = useToast();
   const token = useSelector((state) => state.token);
   async function handleCheckboxChange(task) {
-    // dispatch({ type: "COMPLETE_TASK", payload: task.id });
     const res = await fetch(`${url}/tasks/complete/${task._id}`, {
       method: "PATCH",
       headers: {
@@ -32,21 +31,13 @@ function TaskCard({ task, setSelectedTask }) {
   return (
     <>
       <Box className="flex w-4/5 m-auto flex-col justify-around">
-        {/* <Checkbox
-          size="lg"
-          onChange={() => handleCheckboxChange(task)}
-          colorScheme="orange"
-          checked={task.completed}
-        >
-          {task.title}
-        </Checkbox> */}
         <Checkbox
           onChange={() => handleCheckboxChange(task)}
           colorScheme="orange"
         >
-          CHECKBOX
+          {task.title}
         </Checkbox>
-        {/* <label htmlFor={`task${task._id}`}>{task.title}</label> */}
+
         <Text>{task.description}</Text>
       </Box>
     </>

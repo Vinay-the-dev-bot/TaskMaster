@@ -24,13 +24,29 @@ const NavBar = () => {
   };
   return (
     <>
-      <Box className="flex justify-around py-5">
-        <Text>TaskMaster</Text>
+      <Box className="flex justify-around items-center py-5">
+        <Text>
+          <Link to="/">
+            Task
+            <Text as={"span"} color={"red"}>
+              Master
+            </Text>
+          </Link>
+        </Text>{" "}
         <Text>
           <Link to="/">DashBoard</Link>
         </Text>
-        <Text>{state.username || <Link to="/login">Login</Link>}</Text>
-
+        <Text>
+          {state.username || (
+            <Button
+              onClick={() => navigate("/login")}
+              className="w-fit m-auto"
+              colorScheme="blue"
+            >
+              LOGIN
+            </Button>
+          )}
+        </Text>
         {state.username && (
           <Button
             colorScheme="red"

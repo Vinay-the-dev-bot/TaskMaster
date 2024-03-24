@@ -55,7 +55,10 @@ function Home() {
       setCompletedTasks(compTasks);
       dispatch(addTasks(data));
     };
-    getTasks();
+    const token2 = localStorage.getItem("token");
+    if (token2) {
+      getTasks();
+    }
   }, []);
 
   return (
@@ -64,9 +67,9 @@ function Home() {
       <Text className="text-3xl text-center">Tasks</Text>
       {storeState.username ? (
         <Box border={"1px solid black"} className="flex w-4/5 m-auto">
-          <Box className="flex w-1/4 p-5 flex-col gap-5">
-            {tasks.length > 0 ? (
-              tasks
+          {tasks.length > 0 ? (
+            <Box className="flex w-1/4 p-5 flex-col gap-5">
+              {tasks
                 .filter((task) => !task.completed)
                 .map((task) => (
                   <Button
@@ -76,11 +79,13 @@ function Home() {
                   >
                     {task.title}
                   </Button>
-                ))
-            ) : (
-              <Text>Start Adding tasks by clicking on Add Task Button</Text>
-            )}
-          </Box>
+                ))}
+            </Box>
+          ) : (
+            <Text className="w-full   p-5">
+              Start Adding tasks by clicking on Add Task Button
+            </Text>
+          )}
           <Box className="flex flex-col w-3/4 justify-around">
             {selectedTask && selectedTask._id ? (
               <TaskCard setSelectedTask={setSelectedTask} task={selectedTask} />
@@ -107,7 +112,9 @@ function Home() {
       <Box border={"1px solid black"} className="flex w-4/5 m-auto">
         <Box className="flex  p-5 gap-5">
           {completedTasks.length > 0 ? (
-            completedTasks.map((task) => <CompletedTask task={task} />)
+            completedTasks.map((task) => (
+              <CompletedTask key={task._id} task={task} />
+            ))
           ) : (
             <Text>Please complete tasks</Text>
           )}

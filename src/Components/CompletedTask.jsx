@@ -70,7 +70,7 @@ function TaskCard({ task }) {
     if (data.msg == "Task Deleted") {
       dispatch({
         type: "DELETE_TASK",
-        payload: task._id,
+        payload: task,
       });
 
       toast({
@@ -83,10 +83,27 @@ function TaskCard({ task }) {
       onClose();
     }
   };
+  function handleCompletedTask(task) {
+    onOpen();
+  }
   return (
     <>
+      {/* <p>{JSON.stringify(task)}</p>; */}
+      {/* <div key={task.id}>
+        <input
+          type="checkbox"
+          id={`task${task.id}`}
+          onChange={() => handleCheckboxChange(task)}
+        />
+        <label htmlFor={`task${task.id}`}>{task.title}</label>
+        <Text textDecoration={"line-through"}>{task.description}</Text>
+      </div> */}
       <Box>
-        <Button onClick={onOpen} textDecoration={"line-through"}>
+        <Button
+          onClick={onOpen}
+          // onClick={() => handleCompletedTask(task)}
+          textDecoration={"line-through"}
+        >
           {task.title}
         </Button>
       </Box>
@@ -110,6 +127,13 @@ function TaskCard({ task }) {
                 onChange={(e) => setDescription(e.target.value)}
               />
               <Box className="flex justify-around">
+                <Button
+                  className="w-1/3 mb-5"
+                  colorScheme="green"
+                  onClick={(e) => handleUpdate(e)}
+                >
+                  Update
+                </Button>
                 <Button
                   className="w-1/3 mb-5"
                   colorScheme="red"

@@ -37,8 +37,8 @@ function LoginForm() {
         duration: 1000,
         isClosable: true,
       });
-      console.log(data);
-      localStorage.setItem("username", data.user);
+      console.log(data.user.username);
+      localStorage.setItem("username", data.user.username);
       localStorage.setItem("token", data.token);
       dispatch({
         type: "LOGIN",
