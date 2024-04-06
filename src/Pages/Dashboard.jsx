@@ -120,7 +120,7 @@ function DashBoard() {
                 <Button
                   padding={"0 20px"}
                   key={task._id}
-                  className="w-3/4   m-auto "
+                  className="w-3/4   mx-auto "
                   onClick={() => setSelectedTask(task)}
                 >
                   {task.title}
@@ -155,7 +155,6 @@ function DashBoard() {
       <Divider width={"80% "} margin={"auto"} />
       <Text className="text-3xl py-5 text-center">COMPLETED TASKS</Text>
       <Box
-        // border={"1px solid black"}
         className="flex w-4/5 m-auto  rounded-2xl"
         shadow={"  rgba(0, 0, 0, 0.24) 0px 3px 8px;"}
       >
