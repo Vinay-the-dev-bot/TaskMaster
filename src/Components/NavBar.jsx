@@ -21,6 +21,7 @@ const NavBar = () => {
   };
   return (
     <>
+      {/* {<p>{JSON.stringify(state)}</p>} */}
       <Box className="flex justify-around items-center py-5">
         <Text className="text-3xl">
           <Link to="/">

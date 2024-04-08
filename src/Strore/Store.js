@@ -50,6 +50,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
     case "TASKS":
       return {
@@ -61,14 +62,54 @@ const reducer = (state = initialState, action) => {
         ...state,
         tasks: [...state.tasks, { ...action.payload, completed: false }],
       };
-
+    case "ADD_SUB_TASK":
+      const updatedSubTasks = state.tasks.map((task) => {
+        if (task._id == action.payload.id) {
+          task.subTasks.push({
+            title: action.payload.subTask,
+            completed: false,
+          });
+        }
+        return task;
+      });
+      return {
+        ...state,
+        tasks: updatedSubTasks,
+      };
+    case "COMPLETE_SUB_TASK":
+      const updatedCompletedSubTasks = state.tasks.map((task) => {
+        if (task._id === action.payload.id) {
+          const subTasksUpdated = task.subTasks.map((subTask, index) => {
+            if (index == action.payload.index) {
+              subTask.completed = !subTask.completed;
+            }
+            return subTask;
+          });
+          var ind = 0;
+          subTasksUpdated.forEach((subTask) => {
+            if (subTask.completed) ind++;
+          });
+          if (ind === subTasksUpdated.length && subTasksUpdated.length > 0) {
+            task.completed = true;
+          }
+          task.subTasks = subTasksUpdated;
+        }
+        return task;
+      });
+      console.log(updatedCompletedSubTasks);
+      return {
+        ...state,
+        tasks: updatedCompletedSubTasks,
+      };
     case "TASK_EDIT":
       const editedTasks = state.tasks.map((task) => {
         if (task._id == action.payload._id) {
           task.title = action.payload.title;
           task.description = action.payload.description;
+          task.subTasks.forEach((subTask) => (subTask.completed = false));
           task.completed = false;
         }
+        console.log(task);
         return task;
       });
       return {
@@ -92,7 +133,6 @@ const reducer = (state = initialState, action) => {
       console.log(completedTask);
       return { ...state, tasks: completedTask };
     case "INCOMPLETE_TASK":
-      console.log(action);
       const inCompletedTask = state.tasks.map((task) => {
         if (task._id == action.payload) {
           console.log(task._id, action.payload);
