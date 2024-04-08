@@ -5,8 +5,8 @@ import store from "./Strore/Store";
 import { ChakraProvider } from "@chakra-ui/react";
 import NavBar from "./Components/NavBar";
 import "./App.css";
-// export const url = "http://localhost:4500";
-export const url = "https://taskmaster-server-86uu.onrender.com";
+export const url = "http://localhost:4500";
+// export const url = "https://taskmaster-server-86uu.onrender.com";
 
 function App() {
   return (

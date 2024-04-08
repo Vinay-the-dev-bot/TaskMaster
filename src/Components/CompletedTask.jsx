@@ -34,8 +34,10 @@ function TaskCard({ task }) {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
+        type: "EDIT_TASK",
         title,
         description,
+        completed: false,
       }),
     });
     const data = await res.json();
