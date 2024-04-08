@@ -78,23 +78,22 @@ const reducer = (state = initialState, action) => {
       };
     case "COMPLETE_SUB_TASK":
       const updatedCompletedSubTasks = state.tasks.map((task) => {
-        const subTasksUpdated = task.subTasks.map((subTask, index) => {
-          if (index == action.payload.index) {
-            subTask.completed = !subTask.completed;
+        if (task._id === action.payload.id) {
+          const subTasksUpdated = task.subTasks.map((subTask, index) => {
+            if (index == action.payload.index) {
+              subTask.completed = !subTask.completed;
+            }
+            return subTask;
+          });
+          var ind = 0;
+          subTasksUpdated.forEach((subTask) => {
+            if (subTask.completed) ind++;
+          });
+          if (ind === subTasksUpdated.length && subTasksUpdated.length > 0) {
+            task.completed = true;
           }
-          return subTask;
-        });
-        var ind = 0;
-        subTasksUpdated.forEach((subTask) => {
-          if (subTask.completed) ind++;
-        });
-        console.log("------", subTasksUpdated);
-        if (ind === subTasksUpdated.length && subTasksUpdated.length > 0) {
-          console.log(ind, "+++++++", subTasksUpdated.length);
-          task.completed = true;
-          console.log(task);
+          task.subTasks = subTasksUpdated;
         }
-        task.subTasks = subTasksUpdated;
         return task;
       });
       console.log(updatedCompletedSubTasks);

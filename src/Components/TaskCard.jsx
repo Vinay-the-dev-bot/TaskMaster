@@ -69,7 +69,10 @@ function TaskCard({ task, setSelectedTask }) {
   };
   return (
     <>
-      <Box className="flex w-4/5 m-auto py-5 flex-col justify-around">
+      <Box
+        alignItems={{ base: "center" }}
+        className="flex w-4/5 m-auto py-5 flex-col justify-around"
+      >
         <Checkbox
           onChange={() => handleTaskComplete(task)}
           colorScheme="orange"
@@ -81,7 +84,10 @@ function TaskCard({ task, setSelectedTask }) {
 
         <Text>{task.description}</Text>
 
-        <Box className="flex ml-5 flex-col  w-fit">
+        <Box
+          paddingLeft={{ md: "20px", base: "30px" }}
+          className="flex ml-5 flex-col  w-fit"
+        >
           {task.subTasks.length > 0 &&
             task.subTasks.map((subTask, index) => (
               <Checkbox

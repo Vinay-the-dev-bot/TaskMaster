@@ -111,13 +111,19 @@ function DashBoard() {
       )} */}
       {storeState.username ? (
         <Box
+          flexDirection={{ md: "row", base: "column" }}
+          alignItems={{ md: "start", base: "center" }}
           shadow={"  rgba(0, 0, 0, 0.24) 0px 3px 8px;"}
           className="flex w-4/5 m-auto rounded-2xl"
         >
           {inCompletedTasks.length > 0 ? (
-            <Box className="flex w-1/4 p-5 flex-col gap-5">
+            <Box
+              width={{ md: "25%", base: "90%" }}
+              className="flex w-1/4 p-5 flex-col gap-5"
+            >
               {inCompletedTasks.map((task) => (
                 <Button
+                  colorScheme={selectedTask._id == task._id ? "green" : "blue"}
                   padding={"0 20px"}
                   key={task._id}
                   className="w-3/4   mx-auto "
@@ -132,7 +138,10 @@ function DashBoard() {
               Start Adding tasks by clicking on Add Task Button
             </Text>
           )}
-          <Box className="flex flex-col w-3/4 justify-around">
+          <Box
+            width={{ md: "75%", base: "90%" }}
+            className="flex flex-col w-3/4 justify-around"
+          >
             {selectedTask && selectedTask._id ? (
               <TaskCard setSelectedTask={setSelectedTask} task={selectedTask} />
             ) : null}
