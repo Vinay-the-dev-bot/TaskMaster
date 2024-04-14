@@ -17,10 +17,18 @@ function Login() {
           {isLogin ? <LoginForm /> : <SignupForm />}
         </div>
 
-        <Box className="w-2/5 m-auto  flex flex-col items-center ">
+        <Box
+          className="m-auto  flex flex-col text-center p-3 items-center "
+          width={{ base: "80%", md: "40%" }}
+        >
           {isLogin ? (
             <>
-              <Text className="w-fit p-5">Don't Have an Account</Text>
+              <Text
+                // className="w-fit p-5"
+                width={{ base: "100%", md: "fit-content" }}
+              >
+                Don't Have an Account
+              </Text>
               <Button className="w-fit" onClick={() => setIsLogin(false)}>
                 Register
               </Button>
