@@ -20,6 +20,16 @@ const AddTask = ({ onClose }) => {
   const navigate = useNavigate();
 
   const handleAddTasks = async (e) => {
+    if (title == "") {
+      toast({
+        title: "Plase add title",
+        status: "warning",
+        duration: 1000,
+        position: "top-right",
+        isClosable: true,
+      });
+      return;
+    }
     e.preventDefault();
     const res = await fetch(`${url}/tasks/add`, {
       method: "POST",
