@@ -12,6 +12,16 @@ function TaskCard({ task, setSelectedTask }) {
   const [subTask, setSubTask] = useState("");
   const handleAddSubTask = async (e) => {
     e.preventDefault();
+    if (subTask == "") {
+      toast({
+        title: "Plase add step name",
+        status: "warning",
+        duration: 1000,
+        position: "top-right",
+        isClosable: true,
+      });
+      return;
+    }
     const res = await fetch(`${url}/tasks/${task._id}`, {
       method: "PATCH",
       headers: {
@@ -27,7 +37,7 @@ function TaskCard({ task, setSelectedTask }) {
     if (data.msg == "Task Edited") {
       dispatch(addSubTasks(task, subTask));
       toast({
-        title: "Task Completed",
+        title: "Step Added",
         status: "success",
         duration: 1000,
         position: "top-right",
@@ -101,14 +111,14 @@ function TaskCard({ task, setSelectedTask }) {
             ))}
         </Box>
         <form
-          className="flex border justify-between"
+          className="flex-col  border justify-between "
           onSubmit={handleAddSubTask}
         >
           <Button
             onClick={() => {
               subTaskInp.current.focus();
             }}
-            width={"fit-content"}
+            width={{ base: "100%", md: "fit-content" }}
             padding={"0 20px "}
           >
             Add Steps
@@ -121,7 +131,12 @@ function TaskCard({ task, setSelectedTask }) {
             ref={subTaskInp}
             border={"none"}
           />
-          <Button onClick={handleAddSubTask}>ADD</Button>
+          <Button
+            width={{ base: "100%", md: "fit-content" }}
+            onClick={handleAddSubTask}
+          >
+            ADD
+          </Button>
         </form>
       </Box>
     </>
