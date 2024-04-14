@@ -53,6 +53,7 @@ function SignupForm() {
       } else {
         toast({
           title: "Passwords are Not Matching.",
+          position: "top",
           description: "Please Check both passwords once",
           status: "error",
           duration: 1000,
