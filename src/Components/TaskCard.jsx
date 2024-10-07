@@ -112,6 +112,7 @@ function TaskCard({ task, setSelectedTask }) {
         </Box>
         <form
           className="flex-col  border justify-between "
+          alignItems={{ md: "center" }}
           onSubmit={handleAddSubTask}
         >
           <Button
